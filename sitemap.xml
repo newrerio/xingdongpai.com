@@ -6,22 +6,22 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-  <loc>https://xingdongpai.com/</loc>
+  <loc>https://xingdongpai.org/</loc>
   <lastmod>2020-02-12T09:28:56+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://xingdongpai.com/zh_tw.html</loc>
+  <loc>https://xingdongpai.org/zh_tw.html</loc>
   <lastmod>2020-02-12T09:28:56+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://xingdongpai.com/privacy.html</loc>
+  <loc>https://xingdongpai.org/privacy.html</loc>
   <lastmod>2020-02-12T09:28:56+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://xingdongpai.com/privacy_zh_tw.html</loc>
+  <loc>https://xingdongpai.org/privacy_zh_tw.html</loc>
   <lastmod>2020-02-12T09:28:56+00:00</lastmod>
   <priority>0.64</priority>
 </url>
