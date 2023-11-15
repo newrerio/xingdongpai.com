@@ -5,9 +5,14 @@
 	<title>Guide-line 环游世界</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 
-	<link rel="stylesheet" href="guide-line.css"/>
+	<link id="webcss" rel="preload" href="guideline-web.css" as="style" media="(hover: hover), (pointer: none), (pointer: fine)" />
+  	<link id="phonecss" rel="preload" href="guideline-phone.css" as="style" media="(hover: none) and (pointer: coarse)" />
 </head>	
 	<body>
 		<div class="guideline"></div>	
 	</body>
+	<script>
+	    const link = document.querySelector("webcss");
+	    link.href = "guideline-web.css";
+	</script>
 </html>
