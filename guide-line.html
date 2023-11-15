@@ -10,8 +10,37 @@
 	<!-- https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover#hover -->
 	<!-- pointer has 3 const: none/fine/coarse -->
 	<!-- https://developer.mozilla.org/en-US/docs/Web/CSS/@media/pointer -->
-	<link rel="stylesheet" media='(hover: hover), (pointer: none), (pointer: fine)' href="guideline-web.css"/>	
-	<link rel="stylesheet" media='(hover: none) and (pointer: coarse)' href="guideline-phone.css"/>
+	<style type="text/css">
+		@media (hover: hover), (pointer: none), (pointer: fine) {
+			.guideline {
+				background-image: url("web-750w.svg");
+				background-repeat: no-repeat;
+				background-position-x: center;
+				background-size: contain;
+				width: 100%;
+				height: 1083px;
+			}
+		}
+
+		@media (hover: none) and (pointer: coarse) {
+			.guideline {
+				background-image: url("phone-750w.svg");
+				background-repeat: no-repeat;
+				background-position-x: center;
+				background-size: contain;
+				width: 100%;
+				height: 1781px;	
+			}
+		}
+
+		body {
+			background-color: hsl(356 100% 99%);
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			position: relative
+		}
+	</style>
 </head>	
 	<body>
 		<div class="guideline"></div>	
