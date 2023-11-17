@@ -12,38 +12,72 @@
 	<!-- https://developer.mozilla.org/en-US/docs/Web/CSS/@media/pointer -->
 	<style type="text/css">
 		@media (hover: hover), (pointer: none), (pointer: fine) {
-			.guideline {
+			.svg-ctrl {
 				background-image: url("web-750w.svg");
 				background-repeat: no-repeat;
 				background-position-x: center;
 				background-size: contain;
+				
 				width: 100%;
 				height: 1083px;
 			}
+
+			/*16号字*/
+			@media (max-width: 750px) {
+				.svg-ctrl {
+					max-height: 947.625px;
+				}
+			}
+
+			/*14号字 750x0.875=656.25*/
+			@media (max-width: 656.25px) {
+				.svg-ctrl {
+					max-height: 829.171875px;
+				}
+			}
+
+			/*12号字 750x0.875x0.875=574.21875*/
+			@media (max-width: 574.21875px) {
+				.svg-ctrl {
+					min-height: 829.171875px;
+				}
+			}
+
+
 		}
 
 		@media (hover: none) and (pointer: coarse) {
-			.guideline {
+			.svg-ctrl {
 				background-image: url("phone-750w.svg");
 				background-repeat: no-repeat;
 				background-position-x: center;
 				background-size: contain;
+				
+				min-width: 250px;
 				width: 100%;
-				height: 1781px;	
+				height: 1781px;
+			}
+
+			@media (max-width: 750px) {
+				.svg-ctrl {
+					max-height: 1558.375px;
+				}
+			}
+
+			@media (max-width: 640px) {
+				.svg-ctrl {
+					max-height: 1329.81333px;
+				}
 			}
 		}
 
 		body {
 			background-color: hsl(0 100% 99%);
 			margin: 0;
-			width: 100%;
-			height: 100%;
-			max-height: 1781px;
-			position: relative
 		}
 	</style>
 </head>	
 	<body>
-		<div class="guideline"></div>	
+		<div class="svg-ctrl"></div>
 	</body>
 </html>
