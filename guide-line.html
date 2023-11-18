@@ -57,6 +57,26 @@
 			margin: 0;
 		}
 	</style>
+
+	<script>
+		window.onunhandledrejection = (e) => {
+			console.log(e.reason);
+		};
+		window.addEventListener("rejectionhandled", (event) => {
+				console.log(`Promise rejected; reason: ${event.reason}`);
+			},
+			false,
+		);
+
+		document.addEventListener("DOMContentLoaded", (event) => {
+			console.log("DOM fully loaded and parsed");
+
+		});
+		window.addEventListener("error", (event) => {
+			log.textContent = `${log.textContent}${event.type}: ${event.message}\n`;
+			console.log(event);
+		});
+	</script>
 </head>	
 
 <body>
