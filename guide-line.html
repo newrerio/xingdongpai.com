@@ -75,8 +75,8 @@
 					//todo 错误时提示手动刷新网页
 
 				}
-			  	console.log(responseDetails.url);
-			  	console.log(responseDetails.error);
+			  	console.log(res.url);
+			  	console.log(res.error);
 			}
 			browser.webRequest.onErrorOccurred.addListener(logReqError, { urls: [target] });
 		}
@@ -109,6 +109,28 @@
 			},
 			false,
 		);
+
+
+
+
+		window.addEventListener("offline", (event) => {
+		  const onlinexxx = document.getElementById("onlinexxx");
+		  const offlinexxx = document.getElementById("offlinexxx");
+		  onlinexxx.style.display = "none";
+		  offlinexxx.style.display = "block";
+		});
+
+		window.addEventListener("online", (event) => {
+		  const onlinexxx = document.getElementById("onlinexxx");
+		  const offlinexxx = document.getElementById("offlinexxx");
+		  onlinexxx.style.display = "block";
+		  offlinexxx.style.display = "none";
+		  setInterval(async() => {
+		    onlinexxx.style.display = "none";
+		  }, 10000);
+		});
+
+
 	</script>
 </head>	
 
@@ -116,6 +138,19 @@
 	<div class="fill-ctrl">
 		<div class="svg-ctrl"></div>
 	</div>
+
+
+	<div class="alert-container">
+	  <div class="alert success-alert" id="onlinexxx">
+	    <h4>Your device is connected to the internet.</h4>
+	  </div>
+
+	  <div class="alert danger-alert" id="offlinexxx">
+	    <h4>Your device lost its internet connection.</h4>
+	  </div>
+	</div>
+
+
 </body>
 
 </html>
