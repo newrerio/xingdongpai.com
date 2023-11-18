@@ -58,33 +58,42 @@
 		}
 	</style>
 
-	<script>
+<script type="text/javascript"></script>
+	<script type="text/javascript">
 		/*
 		  e.g., with no network:
 		  "https://developer.mozilla.org/en-US/"
 		  NS_ERROR_NET_ON_RESOLVED in Firefox
 		  net::ERR_INTERNET_DISCONNECTED in Chrome
 		*/
-		let target = "<all_urls>";
-		function logReqError(res) {
-			if (res.url.includes('.ico') == true) {
-				//todo 错误时提示手动刷新网页
+		if (typeof browser === "undefined") {
+	    	var browser = chrome;
 
+			let target = "<all_urls>";
+			function logReqError(res) {
+				if (res.url.includes('.ico') == true) {
+					//todo 错误时提示手动刷新网页
+
+				}
+			  	console.log(responseDetails.url);
+			  	console.log(responseDetails.error);
 			}
-		  	console.log(responseDetails.url);
-		  	console.log(responseDetails.error);
+			browser.webRequest.onErrorOccurred.addListener(logReqError, { urls: [target] });
 		}
-		browser.webRequest.onErrorOccurred.addListener(logReqError, { urls: [target] });
-
 
 		
 
 		document.addEventListener("DOMContentLoaded", (event) => {
 			console.log("DOM fully loaded and parsed");
-			//客户端缓存策略
-			//第1步访问10k小ico文件，错误时提示手动刷新网页
-			//第2步显示等待标示，以及读取（网络或本地）错误的提示
-			//
+			
+			//极小.html架构下，客户端的缓存（svg）策略
+			//html已经加载完成后
+			//	无svg缓存时
+			//		第1步访问10k小ico文件，错误时提示手动刷新网页
+			//		第2步显示菊花等待标示，以及读取（网络或本地）错误的提示
+			//	有svg缓存时
+			//		先显示菊花等待标示（svg可能极大..todo progress提示）
+			//		再 自动显示缓存svg
 		});
 
 
