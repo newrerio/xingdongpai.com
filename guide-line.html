@@ -61,10 +61,13 @@
 <script type="text/javascript"></script>
 	<script type="text/javascript">
 
-		fetch('favicon.ico')
+		// fetch('favicon.ico')
+		fetch('/open/zh_cn.webp')
 			.then((res) => {
+				console.log(res.url);
+				console.log(res.status);
 				if (res.ok == false) {
-					if (res.url.includes('.ico') == true) {
+					if (res.url.includes('zh_cn.webp') == true) {
 						//todo 错误时提示手动刷新网页
 						console.log(res.url);
 					}
@@ -77,7 +80,7 @@
 			.catch((error) => {
 
 			});
-			
+
 
 		document.addEventListener("DOMContentLoaded", (event) => {
 			console.log("DOM fully loaded and parsed");
@@ -128,6 +131,8 @@
 
 
 	</script>
+
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>	
 
 <body>
