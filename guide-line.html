@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<title>Guide-line 环游世界</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-
-	<!-- isPhone == (hover == none && pointer == coarse) -->
-	<!-- hover has 2 const: none/hover -->
-	<!-- https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover#hover -->
-	<!-- pointer has 3 const: none/fine/coarse -->
-	<!-- https://developer.mozilla.org/en-US/docs/Web/CSS/@media/pointer -->
-	<style type="text/css">
+	<meta name="description" content="混迹社会的两种核心能力：抽象能力&|创造能力">
+	<meta name="keywords" content="todo, passion, 效率, 热爱, 兴奋, 成功学, 交易学, 天赋, 兴趣, 目标, 日程">
+	<meta name="author" content="大鸟/声银科技">
+	
+	<style>
+		/**
+		  isPhone == (hover == none && pointer == coarse) 
+		  //hover has 2 const: none/hover 
+		  https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover#hover 
+		  //pointer has 3 const: none/fine/coarse 
+		  https://developer.mozilla.org/en-US/docs/Web/CSS/@media/pointer 
+		 */
 		@media (hover: hover), (pointer: none), (pointer: fine) {
 			.svg-ctrl {
+				/*svg 750x1083*/
 				background-image: url("web-750w.svg");
 				background-repeat: no-repeat;
 				background-position-x: center;
@@ -25,6 +32,7 @@
 
 		@media (hover: none) and (pointer: coarse) {
 			.svg-ctrl {
+				/*svg 750x1781*/
 				background-image: url("phone-750w.svg");
 				background-repeat: no-repeat;
 				background-position-x: center;
@@ -50,9 +58,11 @@
 		}
 	</style>
 </head>	
-	<body>
-		<div class="fill-ctrl">
-			<div class="svg-ctrl"></div>
-		</div>
-	</body>
+
+<body>
+	<div class="fill-ctrl">
+		<div class="svg-ctrl"></div>
+	</div>
+</body>
+
 </html>
