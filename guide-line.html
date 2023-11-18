@@ -59,6 +59,39 @@
 	</style>
 
 	<script>
+		/*
+		  e.g., with no network:
+		  "https://developer.mozilla.org/en-US/"
+		  NS_ERROR_NET_ON_RESOLVED in Firefox
+		  net::ERR_INTERNET_DISCONNECTED in Chrome
+		*/
+		let target = "<all_urls>";
+		function logReqError(res) {
+			if (res.url.includes('.ico') == true) {
+				//todo 错误时提示手动刷新网页
+
+			}
+		  	console.log(responseDetails.url);
+		  	console.log(responseDetails.error);
+		}
+		browser.webRequest.onErrorOccurred.addListener(logReqError, { urls: [target] });
+
+
+		
+
+		document.addEventListener("DOMContentLoaded", (event) => {
+			console.log("DOM fully loaded and parsed");
+			//客户端缓存策略
+			//第1步访问10k小ico文件，错误时提示手动刷新网页
+			//第2步显示等待标示，以及读取（网络或本地）错误的提示
+			//
+		});
+
+
+		window.addEventListener("error", (event) => {
+			log.textContent = `${log.textContent}${event.type}: ${event.message}\n`;
+			console.log(event);
+		});
 		window.onunhandledrejection = (e) => {
 			console.log(e.reason);
 		};
@@ -67,15 +100,6 @@
 			},
 			false,
 		);
-
-		document.addEventListener("DOMContentLoaded", (event) => {
-			console.log("DOM fully loaded and parsed");
-
-		});
-		window.addEventListener("error", (event) => {
-			log.textContent = `${log.textContent}${event.type}: ${event.message}\n`;
-			console.log(event);
-		});
 	</script>
 </head>	
 
