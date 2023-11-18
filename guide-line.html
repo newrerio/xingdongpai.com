@@ -8,7 +8,7 @@
 	<meta name="description" content="混迹社会的两种核心能力：抽象能力&|创造能力">
 	<meta name="keywords" content="todo, passion, 效率, 热爱, 兴奋, 成功学, 交易学, 天赋, 兴趣, 目标, 日程">
 	<meta name="author" content="大鸟/声银科技">
-	
+
 	<style>
 		/**
 		  isPhone == (hover == none && pointer == coarse) 
@@ -60,28 +60,24 @@
 
 <script type="text/javascript"></script>
 	<script type="text/javascript">
-		/*
-		  e.g., with no network:
-		  "https://developer.mozilla.org/en-US/"
-		  NS_ERROR_NET_ON_RESOLVED in Firefox
-		  net::ERR_INTERNET_DISCONNECTED in Chrome
-		*/
-		if (typeof browser === "undefined") {
-	    	var browser = chrome;
 
-			let target = "<all_urls>";
-			function logReqError(res) {
-				if (res.url.includes('.ico') == true) {
-					//todo 错误时提示手动刷新网页
-
+		fetch('favicon.ico')
+			.then((res) => {
+				if (res.ok == false) {
+					if (res.url.includes('.ico') == true) {
+						//todo 错误时提示手动刷新网页
+						console.log(res.url);
+					}
 				}
-			  	console.log(res.url);
-			  	console.log(res.error);
-			}
-			browser.webRequest.onErrorOccurred.addListener(logReqError, { urls: [target] });
-		}
+				return res.blob();
+			})
+			.then((myBlob) => {
 
-		
+			})
+			.catch((error) => {
+
+			});
+			
 
 		document.addEventListener("DOMContentLoaded", (event) => {
 			console.log("DOM fully loaded and parsed");
