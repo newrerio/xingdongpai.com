@@ -47,15 +47,18 @@
 		}
 	</style>
 	<script>
-		/* DOM fully loaded and parsed */
-		//linear logic done(DOM=css+html)
-		function loaded() { 
-			//update 'contain-intrinsic-size',then start to render on-screen 
-			//real ratio: 750/1780=0.42134831460 coomark：长宽比为整数能完全像素对齐
-			newHeight = document.documentElement.clientWidth/0.42134831460 + "px";
-			document.getElementById("main").setAttribute('style', 'contain-intrinsic-height:'+ newHeight);
-		}
-		document.addEventListener('DOMContentLoaded', loaded);
+		var isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
+	    if (isMobile) {
+	        /* DOM fully loaded and parsed */
+			//linear logic done(DOM=css+html)
+	        document.addEventListener('DOMContentLoaded', () =>{
+	        	//update 'contain-intrinsic-size',then start to render on-screen 
+				//real ratio: 750/1780=0.42134831460 coomark：长宽比为整数能完全像素对齐
+				var newHeight = document.documentElement.clientWidth/0.42134831460 + "px";
+				document.getElementById("main").setAttribute('style', 'height:'+ newHeight);
+	        });
+	    }
 	</script>
 </head>	
 
