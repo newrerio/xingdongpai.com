@@ -22,7 +22,7 @@
 				background-repeat: no-repeat;
 				background-position-x: center;
 
-				background-image: url("web.svg");
+				background-image: url("web-750w.svg");
 				height: 1083px;
 			}
 		}
@@ -33,10 +33,11 @@
 				background-repeat: no-repeat;
 				background-position-x: center;
 
-				background-image: url("phone.svg");
+				background-image: url("phone-750w.svg");
+				
 				/* unlike with 'auto', 'hidden' does not automatically start to render on-screen */
 				content-visibility: hidden; 
-  				contain-intrinsic-size: 1780px; /* A guess at the height of it */
+  				contain-intrinsic-height: 1780px; /* A guess at the height of it */
 			}
 		}
 
@@ -52,7 +53,7 @@
 			//update 'contain-intrinsic-size',then start to render on-screen 
 			//real ratio: 750/1780=0.42134831460 coomark：长宽比为整数能完全像素对齐
 			newHeight = window.innerWidth/0.42134831460 + "px";
-			document.getElementById("main").setAttribute('style', 'contain-intrinsic-size:'+ newHeight);
+			document.getElementById("main").setAttribute('style', 'contain-intrinsic-height:'+ newHeight);
 		})
 	</script>
 </head>	
