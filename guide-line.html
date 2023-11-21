@@ -23,7 +23,10 @@
 				background-position-x: center;
 
 				background-image: url("web-750w.svg");
-				height: 1083px;
+				/* coomark MARK-height */
+				/* 'hidden' does not automatically start to render on-screen */
+				content-visibility: hidden; 
+  				contain-intrinsic-height: 1083px; /* A guess at the height of it */
 			}
 		}
 
@@ -35,7 +38,8 @@
 
 				background-image: url("phone-750w.svg");
 				
-				/* unlike with 'auto', 'hidden' does not automatically start to render on-screen */
+				/* coomark MARK-height */
+				/* 'hidden' does not automatically start to render on-screen */
 				content-visibility: hidden; 
   				contain-intrinsic-height: 1780px; /* A guess at the height of it */
 			}
@@ -50,13 +54,25 @@
 		var isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
 	    if (isMobile) {
-	        /* DOM fully loaded and parsed */
+	        //coomark MARK-dom
 			//linear logic done(DOM=css+html)
 	        document.addEventListener('DOMContentLoaded', () =>{
-	        	//update 'contain-intrinsic-size',then start to render on-screen 
 				//real ratio: 750/1780=0.42134831460 coomark：长宽比为整数能完全像素对齐
 				var newHeight = document.documentElement.clientWidth/0.42134831460 + "px";
+
+				//coomark MARK-height
+				//update 'contain-intrinsic-height', then start to render on-screen
+				//combine 2 lines here
+				document.getElementById("main").setAttribute('style', 'contain-intrinsic-height: '+ newHeight);
 				document.getElementById("main").setAttribute('style', 'height:'+ newHeight);
+	        });
+	    } else {
+	    	//coomark MARK-dom
+			//linear logic done(DOM=css+html)
+	        document.addEventListener('DOMContentLoaded', () =>{
+				//coomark MARK-height
+				//update 'contain-intrinsic-height', then start to render on-screen
+				document.getElementById("main").setAttribute('style', 'contain-intrinsic-height: '+ "1083px");
 	        });
 	    }
 	</script>
