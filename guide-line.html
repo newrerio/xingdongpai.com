@@ -8,7 +8,6 @@
 	<meta name="description" content="混迹社会的两种核心能力：抽象能力&|创造能力">
 	<meta name="keywords" content="todo, passion, 效率, 热爱, 兴奋, 成功学, 交易学, 天赋, 兴趣, 目标, 日程">
 	<meta name="author" content="大鸟/声银科技">
-
 	<style>
 		/**
 		  isPhone == (hover == none && pointer == coarse) 
@@ -18,21 +17,27 @@
 		  https://developer.mozilla.org/en-US/docs/Web/CSS/@media/pointer 
 		 */
 		@media (hover: hover), (pointer: none), (pointer: fine) {
-			.fill-ctrl {
-				position: relative;
-				padding-left: calc((100% - 750px)/2);
-				padding-right: calc((100% - 750px)/2);
-			}
+			.svg-url {
+				width: 100%;
+				background-repeat: no-repeat;
+				background-position-x: center;
 
-			div.phone {display:none;}
+				background-image: url("web.svg");
+				height: 1083px;
+			}
 		}
 
 		@media (hover: none) and (pointer: coarse) {
-			.fill-ctrl {
-				position: relative;
-			}
+			.svg-url{
+				width: 100%;
+				background-repeat: no-repeat;
+				background-position-x: center;
 
-			div.web {display:none;}
+				background-image: url("phone.svg");
+				/* unlike with 'auto', 'hidden' does not automatically start to render on-screen */
+				content-visibility: hidden; 
+  				contain-intrinsic-size: 1780px; /* A guess at the height of it */
+			}
 		}
 
 		body {
@@ -40,20 +45,20 @@
 			margin: 0;
 		}
 	</style>
+	<script>
+		/* DOM fully loaded and parsed */
+		//linear logic done(DOM=css+html)   
+		document.addEventListener("DOMContentLoaded", (event) => {
+			//update 'contain-intrinsic-size',then start to render on-screen 
+			//real ratio: 750/1780=0.42134831460 coomark：长宽比为整数能完全像素对齐
+			newHeight = window.innerWidth/0.42134831460 + "px";
+			document.getElementById("main").setAttribute('style', 'contain-intrinsic-size:'+ newHeight);
+		})
+	</script>
 </head>	
 
 <body>
-	<div class="web">
-		<div class="fill-ctrl">
-		  <img src="web-750w.svg" style="width:100%;">
-		</div>
-	</div>
-
-	<div class="phone">
-		<div class="fill-ctrl">
-		  <img src="phone-750w.svg" style="width:100%;">
-		</div>
-	</div>
+	<div id="main" class="svg-url"></div>
 </body>
 
 </html>
