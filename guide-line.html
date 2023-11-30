@@ -333,11 +333,11 @@
 						break domReady_block;
 					}
 
-					//菊花转一圈至少需要1秒钟
+					//延长时间让菊花转一圈
 					let juhua = new Promise((done,fail) => {
 						setTimeout(() => {
-							done;
-					  	}, 999);
+							done();
+					  	}, 1250);
 					});
 					juhua.then(() => {
 						//The page is fully loaded
