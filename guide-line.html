@@ -318,7 +318,7 @@
 					//	((linear logic done) && (async logic done)) || ((linear logic done) && (async logic failed))
 					LOG_DEBUG(" -----------coomark MARK-dom-a4 -----------")
 					LOG_DEBUG("The page is fully loaded || async-url failed")
-					
+
 					//异步loading时【取消】，显示refresh按钮
 					if (IS_OFFLINE == false && IS_ASYNC_CANCLED == false) {
 						IS_ASYNC_CANCLED = true;
@@ -333,9 +333,17 @@
 						break domReady_block;
 					}
 
-					//The page is fully loaded
-					displayView("main");
-					IS_ASYNC_URL = false;
+					//菊花转一圈至少需要1秒钟
+					let juhua = new Promise((done,fail) => {
+						setTimeout(() => {
+							done;
+					  	}, 999);
+					});
+					juhua.then(() => {
+						//The page is fully loaded
+						displayView("main");
+						IS_ASYNC_URL = false;
+					});
 				}
 			}
 		}
