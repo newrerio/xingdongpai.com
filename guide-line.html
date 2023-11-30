@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -8,6 +7,7 @@
 	<meta name="description" content="混迹社会的两种核心能力：抽象能力&|创造能力">
 	<meta name="keywords" content="todo, passion, 效率, 热爱, 兴奋, 成功学, 交易学, 天赋, 兴趣, 目标, 日程">
 	<meta name="author" content="大鸟/声银科技">
+
 	<style>
 		/**
 		  isPhone == (hover == none && pointer == coarse) 
@@ -17,6 +17,8 @@
 		  https://developer.mozilla.org/en-US/docs/Web/CSS/@media/pointer 
 		 */
 		@media (hover: hover), (pointer: none), (pointer: fine) {
+			img.svg_cache{ {src:"web-750w.svg"} }
+
 			.svg-url {
 				width: 100%;
 				background-repeat: no-repeat;
@@ -31,6 +33,8 @@
 		}
 
 		@media (hover: none) and (pointer: coarse) {
+			img.svg_cache { {src:"phone-750w.svg"} }
+
 			.svg-url{
 				width: 100%;
 				background-repeat: no-repeat;
@@ -49,39 +53,428 @@
 			background-color: hsl(0 100% 99%);
 			margin: 0;
 		}
+
+		.center-initSizeYES {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		.center-initSizeNO {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+
+		/* ------------ refresh button coomark ------------- */
+		/* https://uiverse.io/mrhyddenn/cuddly-zebra-68 */
+		.refresh {
+			border: none;
+			border-radius: 7px;
+			padding: 4px 12px;
+			/* 65/97=0.670 */
+			background: linear-gradient(hsl(207deg 97% 65%),hsl(215deg 100% 50%));
+			color: #ffffff;
+			font-size: 16px;
+			font-weight: bold;
+			font-family: Arial Black, "Helvetica Neue";
+			user-select: none;
+  			-webkit-user-select: none;
+  			touch-action: manipulation;
+		}
+		
+		.refresh:active {
+			background: linear-gradient(hsl(205deg 97% 63%),hsl(215deg 100% 50%));
+			box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);			
+		}
+
+		/* ------------ loading ------------- */
+		/* modified from https://uiverse.io/mrhyddenn/black-bullfrog-16 */
+		/*
+			16/42.1px   = 0.3800
+			16.1/42.1px	= 0.382
+			17/42.1px   = 0.403800
+			17.1/42.1px = 0.40618
+		*/
+		.spinner {
+			width: 1em;
+			height: 1em;
+			font-size: 56px;
+		}
+
+		/* #abb8c3 207|207.5deg */
+		/* 17/72=0.2361111 */
+		/* 17.76/71.76=0.23230 0.23230x0.56=0.1300 */
+		@keyframes spinner {
+			0% {
+				background-color: #abb8c3;
+			}
+
+			100% {
+				background-color: transparent;
+			}
+		}
+
+		/*ease-out cubic-bezier(0, 0, 0.58, 1)*/
+		.spinner .spinner-blade {
+			position: absolute;
+			left: 0.4629em;
+			bottom: 0;
+			width: 0.074em;
+			height: 0.2777em;
+			border-radius: 0.0555em;
+			background-color: transparent;
+			-webkit-transform-origin: center -0.2222em;
+			-ms-transform-origin: center -0.2222em;
+			transform-origin: center -0.2222em;
+			animation: spinner 0.999s infinite ease-out;
+		}
+
+		/*7x12=84*/
+		.spinner .spinner-blade:nth-child(12) {
+			-webkit-animation-delay: 0.084s;
+			animation-delay: 0.084s;
+			-webkit-transform: rotate(120deg);
+			-ms-transform: rotate(120deg);
+			transform: rotate(120deg);
+		}
+
+		.spinner .spinner-blade:nth-child(1) {
+			-webkit-animation-delay: 0.167s;
+			animation-delay: 0.167s;
+			-webkit-transform: rotate(150deg);
+			-ms-transform: rotate(150deg);
+			transform: rotate(150deg);
+		}
+
+		.spinner .spinner-blade:nth-child(2) {
+			-webkit-animation-delay: 0.25s;
+			animation-delay: 0.25s;
+			-webkit-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+			transform: rotate(180deg);
+		}
+
+		.spinner .spinner-blade:nth-child(3) {
+			-webkit-animation-delay: 0.333s;
+			animation-delay: 0.333s;
+			-webkit-transform: rotate(210deg);
+			-ms-transform: rotate(210deg);
+			transform: rotate(210deg);
+		}
+
+		.spinner .spinner-blade:nth-child(4) {
+			-webkit-animation-delay: 0.416s;
+			animation-delay: 0.416s;
+			-webkit-transform: rotate(240deg);
+			-ms-transform: rotate(240deg);
+			transform: rotate(240deg);
+		}
+
+		/*coomark 0.74999/0.49999=1.500010000200004*/
+		.spinner .spinner-blade:nth-child(5) {
+			-webkit-animation-delay: 0.49999s;
+			animation-delay: 0.49999s;
+			-webkit-transform: rotate(270deg);
+			-ms-transform: rotate(270deg);
+			transform: rotate(270deg);
+		}
+
+		.spinner .spinner-blade:nth-child(6) {
+			-webkit-animation-delay: 0.583s;
+			animation-delay: 0.583s;
+			-webkit-transform: rotate(300deg);
+			-ms-transform: rotate(300deg);
+			transform: rotate(300deg);
+		}
+
+		.spinner .spinner-blade:nth-child(7) {
+			-webkit-animation-delay: 0.666s;
+			animation-delay: 0.666s;
+			-webkit-transform: rotate(330deg);
+			-ms-transform: rotate(330deg);
+			transform: rotate(330deg);
+		}
+
+		/*coomark 0.74999/0.49999=1.500010000200004*/
+		.spinner .spinner-blade:nth-child(8) {
+			-webkit-animation-delay: 0.74999s;
+			animation-delay: 0.74999s;
+			-webkit-transform: rotate(360deg);
+			-ms-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+
+		.spinner .spinner-blade:nth-child(9) {
+			-webkit-animation-delay: 0.833s;
+			animation-delay: 0.833s;
+			-webkit-transform: rotate(30deg);
+			-ms-transform: rotate(30deg);
+			transform: rotate(30deg);
+		}
+
+		.spinner .spinner-blade:nth-child(10) {
+			-webkit-animation-delay: 0.916s;
+			animation-delay: 0.916s;
+			-webkit-transform: rotate(60deg);
+			-ms-transform: rotate(60deg);
+			transform: rotate(60deg);
+		}
+
+		.spinner .spinner-blade:nth-child(11) {
+			-webkit-animation-delay: 0.999s;
+			animation-delay: 0.999s;
+			-webkit-transform: rotate(90deg);
+			-ms-transform: rotate(90deg);
+			transform: rotate(90deg);
+			
+		}
+		/* -------------- end -------------- */
 	</style>
 	<script>
-		var isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+		const DEBUG = true;
+		const IS_MOBILE = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
-	    if (isMobile) {
-	        //coomark MARK-dom
-			//linear logic done(DOM=css+html)
-	        document.addEventListener('DOMContentLoaded', () =>{
-				//real ratio: 750/1780=0.42134831460 coomark：长宽比为整数能完全像素对齐
-				var newHeight = document.documentElement.clientWidth/0.42134831460 + "px";
+		//init MARK-dom-a0
+		let IS_LINEAR_DOM = true;
+		let IS_ASYNC_URL = false;
+		let IS_ASYNC_CANCLED = false;
+		let IS_FINISHED_DOM = false;
 
-				//coomark MARK-height
-				//update 'contain-intrinsic-height', then start to render on-screen
-				//combine 2 lines here
-				document.getElementById("main").setAttribute('style', 'contain-intrinsic-height: '+ newHeight);
-				document.getElementById("main").setAttribute('style', 'height:'+ newHeight);
-	        });
-	    } else {
-	    	//coomark MARK-dom
-			//linear logic done(DOM=css+html)
-	        document.addEventListener('DOMContentLoaded', () =>{
-				//coomark MARK-height
-				//update 'contain-intrinsic-height', then start to render on-screen
-				//combine 2 lines here
-				document.getElementById("main").setAttribute('style', 'contain-intrinsic-height: '+ "1083px");
-				document.getElementById("main").setAttribute('style', 'height: 1083px');
-	        });
-	    }
+		let IS_OFFLINE = false;
+		
+		LOG_DEBUG = (str) => {
+			if (DEBUG == true) {
+				console.log(str)
+			}
+		}
+
+		//1:main 2:refresh 3:loading
+		displayView = (mark) => {
+			if (mark == "main" && document.getElementById("main").style.display != "block") {
+				//show main
+				document.getElementById("main").style.display = "block";
+				document.getElementById("loading").style.display = "none";
+				document.getElementById("refresh").style.display = "none";
+			}
+			if (mark == "refresh" && document.getElementById("refresh").style.display != "block") {
+				//show refresh button
+				document.getElementById("main").style.display = "none";
+				document.getElementById("loading").style.display = "none";
+				document.getElementById("refresh").style.display = "block";
+			}
+			if (mark == "loading" && document.getElementById("loading").style.display != "block") {
+				//show loading..
+				document.getElementById("main").style.display = "none";
+				document.getElementById("loading").style.display = "block";
+				document.getElementById("refresh").style.display = "none";
+			}
+		}
+
+		//autorelease fn:   	(event) => {}
+		//const fn: 			const fname = function(event) {}
+		//readystatechange as event listener to insert or modify the DOM before DOMContentLoaded
+		//autorelease 	document.onreadystatechange = domReadyState;
+		//release	 	document.addEventListener("readystatechange", domReadyState)
+		//				document.removeEventListener("readystatechange", domReadyState)
+		domReadyState = () => {
+			domReady_block: {
+				if (document.readyState == "interactive") {
+					//coomark MARK-dom-a2
+					//  browser is handing linear logic(DOM=html+css), can access DOM now !
+					//	browser is handing async logic(such as herf=,url(),src=,render), can do async stuff too !
+					LOG_DEBUG(" -----------coomark MARK-dom-a2 -----------")
+					IS_ASYNC_URL = true;
+
+					displayView("loading");
+					document.getElementById("main").setAttribute('class', 'svg-url');
+
+					if (IS_MOBILE == true) {
+						//real ratio: 750/1780=0.42134831460 coomark：长宽比为整数能完全像素对齐
+						newHeight = document.documentElement.clientWidth/0.42134831460 + "px";
+
+						//coomark MARK-height
+						//update 'contain-intrinsic-height', then start to render on-screen async
+						document.getElementById("main").setAttribute('style', 'contain-intrinsic-height: '+ newHeight + ";");
+						//some unsupported browsers
+						document.getElementById("main").setAttribute('style', 'height:'+ newHeight + ";");
+						
+						LOG_DEBUG(newHeight);
+				    } else {
+				    	//coomark MARK-height
+						//update 'contain-intrinsic-height', then start to render on-screen async
+						document.getElementById("main").setAttribute('style', 'contain-intrinsic-height: 1083px;');
+						//some unsupported browsers
+						document.getElementById("main").setAttribute('style', 'height: 1083px;');
+						LOG_DEBUG("1083px");
+				    }
+				} else if (document.readyState == 'complete'){
+					//coomark MARK-dom-a4
+					//	Async-url fail || The page is fully loaded
+					//	((linear logic done) && (async logic done)) || ((linear logic done) && (async logic failed))
+					LOG_DEBUG(" -----------coomark MARK-dom-a4 -----------")
+					LOG_DEBUG("The page is fully loaded || async-url failed")
+					
+					//异步loading时【取消】，显示refresh按钮
+					if (IS_OFFLINE == false && IS_ASYNC_CANCLED == false) {
+						IS_ASYNC_CANCLED = true;
+						displayView("refresh");
+						break domReady_block;
+					}
+
+					//异步loading时【网断】，显示refresh按钮
+					if (IS_OFFLINE == true && IS_ASYNC_CANCLED == false) {
+						IS_ASYNC_CANCLED = false;
+						displayView("refresh");
+						break domReady_block;
+					}
+
+					//The page is fully loaded
+					displayView("main");
+					IS_ASYNC_URL = false;
+				}
+			}
+		}
+
+		js_block: {
+			var newHeight;
+
+			//coomark MARK-dom-a1
+			//	browser is handing linear logic(DOM=html+css)
+			if (document.readyState == "loading") {
+				LOG_DEBUG(" -----------coomark MARK-dom-a1 -----------")
+				document.onreadystatechange = domReadyState;
+			}else{
+				break js_block;
+			}
+
+			//coomark MARK-dom-a3
+			//	linear logic done(DOM=html+css)
+			//  do NOT use removeEventListener("DOMContentLoaded", ()=>{})
+			document.addEventListener("DOMContentLoaded", (event) => {
+				LOG_DEBUG(" -----------coomark MARK-dom-a3 -----------")
+				LOG_DEBUG("linear logic done");
+				IS_LINEAR_DOM = false;
+			})
+
+			//coomark MARK-dom-a5
+			//	(linear logic done) && (async logic done)
+			//	Whole page has loaded(window.onload)
+			window.onload = (event) => {
+				onload_block: {
+					LOG_DEBUG(" -----------coomark MARK-dom-a5 -----------")
+					LOG_DEBUG("Whole page has loaded");
+
+					// 异步loading时【网断】，显示refresh按钮
+					if (IS_OFFLINE == true && IS_ASYNC_CANCLED == false) {
+						displayView("refresh");
+						break onload_block;
+					} 
+					
+					//Whole page has loaded	
+					displayView("main");
+
+					//end of MARK-dom
+					IS_LINEAR_DOM = false;
+					IS_ASYNC_URL = false;
+					IS_ASYNC_CANCLED = false;
+					IS_FINISHED_DOM = true;
+
+					IS_OFFLINE = false;
+				}
+			}
+
+			screen.orientation.onchange = (event) => {
+				const type = event.target.type;
+			  	const angle = event.target.angle;
+			  	LOG_DEBUG(`ScreenOrientation change: ${type}, ${angle} degrees.`);
+			  	if (type == "portrait-primary" || type == "landscape-primary" || type == "landscape-secondary" || type == "portrait-secondary") {
+			  		location.reload();
+			  	}
+			}
+
+			window.onoffline = (event) => {
+				LOG_DEBUG(" -----------onoffline -----------")
+
+				//正在显示main时【网断】，显示refresh按钮
+				if (IS_FINISHED_DOM == true) {
+					displayView("refresh")
+				}
+
+				IS_OFFLINE = true;
+			}
+
+			window.ononline = (event) => {
+				LOG_DEBUG(" -----------ononline -----------")
+
+				IS_OFFLINE = false;
+			}
+			
+			window.onerror = (event) => {
+				LOG_DEBUG(" -----------error-----------")
+				if (typeof event.cancelable !== "boolean" || event.cancelable) {
+					// The event can be canceled, so we do so.
+					event.preventDefault();
+				}
+				event.stopImmediatePropagation();
+				LOG_DEBUG("event.type:" + event.type + " event.message:" + event.message);
+			}
+
+			btnRefreshOnClick = (event) => {
+				block: {
+					if (IS_OFFLINE == true) {
+						break block;
+					}
+
+					// 异步loading时【取消】，点击显示的refresh按钮
+					if (IS_OFFLINE == false && IS_ASYNC_CANCLED == true) {
+						displayView("loading")
+						location.reload();
+						break block;
+					}
+
+					// 未加载完成时出现了refresh按钮，点击refresh按钮
+					if (IS_OFFLINE == false && IS_FINISHED_DOM == false) {
+						LOG_DEBUG("IS_OFFLINE == false && IS_FINISHED_DOM == false")
+						displayView("loading")
+						location.reload();
+						break block;
+					}
+
+					// loading完成后...出现了refresh按钮，直接再次显示main
+					if (IS_FINISHED_DOM == true) {
+						displayView("main")
+						break block;
+					}
+				}
+			}
+		}
 	</script>
 </head>	
 
 <body>
-	<div id="main" class="svg-url"></div>
+	<div id="loading" class="spinner center-initSizeYES" style="display:none;">
+	    <div class="spinner-blade"></div>
+	    <div class="spinner-blade"></div>
+	    <div class="spinner-blade"></div>
+	    <div class="spinner-blade"></div>
+	    <div class="spinner-blade"></div>
+	    <div class="spinner-blade"></div>
+	    <div class="spinner-blade"></div>
+	    <div class="spinner-blade"></div>
+	    <div class="spinner-blade"></div>
+	    <div class="spinner-blade"></div>
+	    <div class="spinner-blade"></div>
+	    <div class="spinner-blade"></div>
+	</div>
+	<div id="main" style="display:none;"></div>
+	<a id="refresh" class="refresh center-initSizeNO" style="display:none;" onClick="btnRefreshOnClick()"> BOND MAKRER </a>
+	<!-- 用<img>做缓存 --> 
+	<img id="svg_cache" style="display:none;">
 </body>
 
 </html>
