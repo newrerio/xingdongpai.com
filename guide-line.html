@@ -8,11 +8,19 @@
 	<meta name="keywords" content="todo, passion, 效率, 热爱, 兴奋, 成功学, 交易学, 天赋, 兴趣, 目标, 日程">
 	<meta name="author" content="大鸟/声银科技">
 
-	<meta name="desc" content="代码质量按照此最高标准:【0内存 && 超快访问速度 && 代码可读性】 基于 chromiun环境开发/对比">
-	<!-- 0内存：1行代码a.html占用1.1M，8000行代码b.html占用1.1M => 0内存 -->
-	<!-- 代码可读性：老板/客户/a程序员/b程序员的认知差异/互有不可知的解决标准 -->
+	<meta name="desc" content="代码质量按照此最高标准:【0内存 && 超快访问速度 && 代码可读性】">
+	<!-- 基于 chromiun环境 1个网页tab打开状态 开发/对比 -->
+	<!-- 代码可读性：认知差异的解决标准 -->
+	<!-- 认知差异直接分开
+		认知差异可以了解
+			共同认知认知差异
+		玩人不可知系犯罪 -->
 
 	<style>
+		/**
+			A Fastest Loading Website
+		 	use a linear .css and .js 
+		*/
 		/**
 		  isPhone == (hover == none && pointer == coarse) 
 		  //hover has 2 const: none/hover 
@@ -240,7 +248,6 @@
 		/* -------------- end -------------- */
 	</style>
 	<script>
-
 		//autorelease
 		//	1.use a sync&&autorelease function () => {} 
 		//	2.use a pointer of a value, use '=>'
@@ -277,6 +284,8 @@
 				location.assign(window.location);
 			}
 
+			let juhuaID = null;
+			
 
 			var newHeight;
 
@@ -341,6 +350,8 @@
 						LOG_DEBUG("1083px");
 				    }
 
+
+
 				} else if (document.readyState == 'complete'){
 					//coomark MARK-dom-a4
 					//	Async-url fail || The page is fully loaded
@@ -388,12 +399,9 @@
 					IS_LINEAR_DOM = false;
 				})
 
-				//todo Safari bug？？？
 				window.onbeforeunload = (event) => {
 					LOG_DEBUG(" -----------coomark MARK-dom-a4-1 ----------- ")
 					LOG_DEBUG("The page is fully loaded || async-url failed")
-
-					document.getElementById("main").style.display = "none";
 					if (IS_DOM4_MARK == null && IS_DOM5_MARK == false) {
 						LOG_DEBUG("async loading then canceled request ")
 						// async loading then canceled request, show btn
@@ -415,28 +423,21 @@
 					} else {
 						LOG_DEBUG("--------coomark the end of MARK-dom --------")
 
-						//延长时间让菊花转一圈
+						//显示1.5s菊花动画
 						document.getElementById("main").style.display = "none";
-						let juhua = new Promise((done,fail) => {
-							setTimeout(() => {
-								done();
-						  	}, 1250);
-						});
-						juhua.then(() => {
-							//Whole page has loaded	
+						juhuaID = setTimeout(() => {
 							displayView("main");
-													
-							//end of MARK-dom
-							IS_LINEAR_DOM = false;
-							IS_ASYNC_URL = false;
-							IS_DOM4_MARK = false;
-						});
+						}, 1500);
+
+						//end of MARK-dom
+						IS_LINEAR_DOM = false;
+						IS_ASYNC_URL = false;
+						IS_DOM4_MARK = false;
 					}
 				}
 
 				window.onunload = (event) => {
 					LOG_DEBUG(" -----------window.onunload ----------- ")
-					document.getElementById("main").style.display = "none";
 				}
 
 				screen.orientation.onchange = (event) => {
@@ -462,11 +463,14 @@
 				
 				window.onerror = (event) => {
 					LOG_DEBUG(" -----------error-----------")
-					if (typeof event.cancelable !== "boolean" || event.cancelable) {
-						event.preventDefault();
+					
+					if (juhuaID != null) {
+						clearTimeout(juhuaID)
 					}
+
 					event.stopImmediatePropagation();
-					LOG_DEBUG("event.type:" + event.type + " event.message:" + event.message);
+					event.preventDefault();
+					LOG_DEBUG(event + " event.type:" + event.type + " event.message:" + event.message);
 				}
 
 			}
@@ -519,7 +523,7 @@
 	    <div class="spinner-blade"></div>
 	</div>
 	<div id="main" style="display:none;"></div>
-	<!-- 用<img>做缓存 --> 
+	<!-- <img> as a cache --> 
 	<img id="svg_cache" style="display:none;">
 </body>
 
